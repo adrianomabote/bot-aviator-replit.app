@@ -41,7 +41,7 @@
   .logo svg{width:42px;height:42px;color:#00f0ff}
   .badge{display:inline-flex;gap:8px;align-items:center;color:#ffce73;font-weight:800;font-size:14px;margin:8px auto 12px;padding:6px 12px;border-radius:999px;background:#2a1f0a}
   h1{margin:8px 0 8px;font-size:24px;font-weight:800;text-align:center}
-  p{margin:6px auto 18px;color:var(--muted);line-height:1.55;max-width:48ch;text-align:center}
+  p{margin:6px auto 18px;color:#var(--muted);line-height:1.55;max-width:48ch;text-align:center}
   .btn{width:100%; margin-top:12px; padding:16px; border-radius:16px; border:0; font-weight:800; font-size:16px; cursor:pointer; box-shadow:0 8px 20px #0007;}
   .btn-green{background:var(--green); color:#fff}
   .btn-blue{background:var(--blue); color:#fff}
@@ -65,14 +65,13 @@
   .btn-with-icon{display:flex;justify-content:center;align-items:center;gap:10px}
   .icon-chat{width:18px;height:18px;display:inline-block}
 
-  /* Animação de batida de coração no botão verde da 2ª tela */
-  .heartbeat { animation: heartbeat 1.4s infinite; }
+  /* Animação de batida de coração (mais lenta e contínua) */
+  .heartbeat { animation: heartbeat 2s infinite ease-in-out; }
   @keyframes heartbeat {
-    0% { transform: scale(1); }
-    14% { transform: scale(1.12); }
-    28% { transform: scale(1); }
-    42% { transform: scale(1.12); }
-    70% { transform: scale(1); }
+    0%   { transform: scale(1); }
+    25%  { transform: scale(1.08); }
+    50%  { transform: scale(1); }
+    75%  { transform: scale(1.08); }
     100% { transform: scale(1); }
   }
 </style>
@@ -88,7 +87,7 @@
       <div class="center"><span class="badge">⚠️ Atenção</span></div>
       <h1>Antes de obter o bot</h1>
       <p>Entre no nosso grupo de <strong>WhatsApp</strong> para receber dicas exclusivas para ganhar no jogo avaitor.</p>
-      <button id="btnGroup" class="btn btn-green">💬 Entrar no Grupo</button>
+      <button id="btnGroup" class="btn btn-green heartbeat">💬 Entrar no Grupo</button>
       <div id="successMsg" class="success-text">✅ Agora já pode clicar no botão de Obter o Bot Aviator</div>
       <button id="btnBot" class="btn btn-blue">→ Obter Bot Aviator</button>
       <div class="warn">⚠️ É obrigatório entrar no grupo primeiro para continuar.</div>
@@ -139,14 +138,12 @@
 
   let liberado = false;
 
-  // Clicar "Entrar no Grupo" → abre link, libera fluxo, mostra texto verde abaixo
   btnGroup.onclick = () => {
     window.open(GROUP_LINK, "_blank");
     liberado = true;
     successMsg.style.display = 'block';
   };
 
-  // Clicar "Obter Bot Aviator"
   btnBot.onclick = () => {
     if (!liberado) {
       topMsg.style.display = 'block';
@@ -156,11 +153,9 @@
     s1.classList.add('hidden'); s2.classList.remove('hidden');
   };
 
-  // Voltar / WhatsApp
   btnBack.onclick = () => { s2.classList.add('hidden'); s1.classList.remove('hidden'); };
   btnWA.onclick   = () => { window.open(SUPPORT_WA, "_blank"); };
 
-  // Bloqueios simples de copiar
   window.addEventListener('keydown', e=>{
     if(e.key==="F12" || (e.ctrlKey && ["u","s","c"].includes(e.key.toLowerCase()))) e.preventDefault();
   });
@@ -168,7 +163,3 @@
 </script>
 </body>
 </html>
-
-
-
-
