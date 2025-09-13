@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aviator – Fluxo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0e10; --card:#121418; --muted:#9aa3ad; --text:#e9eef5;
+    --green:#16a34a; --blue:#2563eb;
+    --warn-bg:#2a1f0a; --outline:#1f2430;
+    --danger:#b91c1c; --danger-text:#fff;
+    --shadow:0 12px 32px #0008, inset 0 0 0 1px #ffffff10;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    display:flex; align-items:flex-start; justify-content:center;
+    user-select:none; -webkit-user-select:none;
+  }
+  .wrap{ width:min(560px,92vw); padding:74px 18px 40px; }
+  .card{ background:var(--card); border-radius:24px; padding:28px 18px 24px; box-shadow:var(--shadow); }
+  .hidden{display:none}
+  .center{text-align:center}
+
+  /* banner vermelho topo */
+  .topbar-msg{
+    position:fixed; top:12px; left:50%; transform:translateX(-50%);
+    width:min(560px,92vw); border-radius:14px; padding:14px 16px;
+    box-shadow:0 10px 28px #000a; display:none; font-size:14px; font-weight:600;
+    background:var(--danger); color:var(--danger-text); z-index:50;
+  }
+
+  /* Tela 1 */
+  .logo{width:84px;height:84px;border-radius:20px;display:grid;place-items:center;margin:10px auto;background:linear-gradient(145deg,#1fd1f9,#00e5ff33 60%, #00ffa533)}
+  .logo svg{width:42px;height:42px;color:#00f0ff}
+  .badge{display:inline-flex;gap:8px;align-items:center;color:#ffce73;font-weight:800;font-size:14px;margin:8px auto 12px;padding:6px 12px;border-radius:999px;background:#2a1f0a}
+  h1{margin:8px 0 8px;font-size:24px;font-weight:800;text-align:center}
+  p{margin:6px auto 18px;color:var(--muted);line-height:1.55;max-width:48ch;text-align:center}
+  .btn{width:100%; margin-top:12px; padding:16px; border-radius:16px; border:0; font-weight:800; font-size:16px; cursor:pointer; box-shadow:0 8px 20px #0007;}
+  .btn-green{background:var(--green); color:#fff}
+  .btn-blue{background:var(--blue); color:#fff}
+  .btn-ghost{background:transparent; color:#dfe7f3; border:1px solid var(--outline)}
+  .warn{margin:14px auto 12px; padding:12px 14px; border-radius:14px; display:flex; gap:10px; align-items:flex-start; max-width:520px; background:var(--warn-bg); color:#f6c96d;}
+  .success-text{margin-top:10px; color:#4ade80; font-weight:700; display:none; text-align:center;}
+
+  /* Tela 2 (igual ao print) */
+  .hero-img{
+    width:170px; height:170px; object-fit:cover; display:block; margin:6px auto 14px;
+    border-radius:18px; box-shadow:0 10px 28px #000a, inset 0 0 0 1px #ffffff22;
+  }
+  .hero-title{ font-size:28px; font-weight:800; margin:8px 0 14px; text-align:center }
+  .hero-text{ color:#cfd6e3; max-width:54ch; margin:0 auto 18px; line-height:1.7; text-align:center }
+  .hero-alert{
+    background:#2a1f0a; color:#ffd66d; border:1px solid #6b4a11;
+    padding:12px 14px; border-radius:14px; margin:16px auto 18px; max-width:520px;
+    font-weight:700;
+  }
+  .btn-lg{ padding:18px; font-size:17px; border-radius:18px }
+  .btn-with-icon{display:flex;justify-content:center;align-items:center;gap:10px}
+  .icon-chat{width:18px;height:18px;display:inline-block}
+
+  /* Animação de batida de coração no botão verde da 2ª tela */
+  .heartbeat { animation: heartbeat 1.4s infinite; }
+  @keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.12); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.12); }
+    70% { transform: scale(1); }
+    100% { transform: scale(1); }
+  }
+</style>
+</head>
+<body oncontextmenu="return false">
+  <!-- Banner vermelho topo -->
+  <div id="topMsg" class="topbar-msg">Por favor entre no grupo primeiro depois volte a obter o Bot Aviator</div>
+
+  <div class="wrap">
+    <!-- TELA 1 -->
+    <section id="screen1" class="card">
+      <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8z"/></svg></div>
+      <div class="center"><span class="badge">⚠️ Atenção</span></div>
+      <h1>Antes de obter…</h1>
+      <p>Entre no nosso grupo de <strong>WhatsApp</strong> para receber dicas exclusivas.</p>
+      <button id="btnGroup" class="btn btn-green">💬 Entrar no Grupo</button>
+      <div id="successMsg" class="success-text">✅ Agora já pode clicar no botão de Obter o Bot Aviator</div>
+      <button id="btnBot" class="btn btn-blue">→ Obter Bot Aviator</button>
+      <div class="warn">⚠️ É obrigatório entrar no grupo primeiro para continuar.</div>
+    </section>
+
+    <!-- TELA 2 -->
+    <section id="screen2" class="card hidden center">
+      <img class="hero-img" src="https://i.ibb.co/1G1Hf9CG/aviator-bot-resized.png" alt="Bot Aviator" />
+      <div class="hero-title">Bot Aviator</div>
+
+      <div class="hero-text">
+        Para obter o Bot Aviator, é necessário entrar em contacto com o suporte no WhatsApp e receber
+        todas as instruções sobre como funciona o nosso aplicativo para ganhar no jogo Aviator.
+      </div>
+
+      <div class="hero-alert">⚠️ <strong>Atenção:</strong> O aplicativo tem custo e não é gratuito.</div>
+
+      <button id="btnWA" class="btn btn-green btn-lg btn-with-icon heartbeat">
+        <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8z"/>
+        </svg>
+        Contactar Suporte Agora
+      </button>
+
+      <button id="btnBack" class="btn btn-ghost btn-lg btn-with-icon" style="margin-top:16px">
+        <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+        Voltar
+      </button>
+    </section>
+  </div>
+
+<script>
+  // Links
+  const GROUP_LINK = "https://chat.whatsapp.com/KFTyX0bEfaN726loPwelCz?mode=ems_copy_t";
+  const SUPPORT_WA  = "https://wa.me/258860608296?text=Ol%C3%A1%2C%20quero%20o%20Bot%20Aviator.";
+
+  // Elements
+  const s1 = document.getElementById('screen1');
+  const s2 = document.getElementById('screen2');
+  const btnGroup = document.getElementById('btnGroup');
+  const btnBot = document.getElementById('btnBot');
+  const btnBack = document.getElementById('btnBack');
+  const btnWA = document.getElementById('btnWA');
+  const successMsg = document.getElementById('successMsg');
+  const topMsg = document.getElementById('topMsg');
+
+  let liberado = false;
+
+  // Clicar "Entrar no Grupo" → abre link, libera fluxo, mostra texto verde abaixo
+  btnGroup.onclick = () => {
+    window.open(GROUP_LINK, "_blank");
+    liberado = true;
+    successMsg.style.display = 'block';
+  };
+
+  // Clicar "Obter Bot Aviator"
+  btnBot.onclick = () => {
+    if (!liberado) {
+      topMsg.style.display = 'block';
+      setTimeout(()=> topMsg.style.display='none', 4000);
+      return;
+    }
+    s1.classList.add('hidden'); s2.classList.remove('hidden');
+  };
+
+  // Voltar / WhatsApp
+  btnBack.onclick = () => { s2.classList.add('hidden'); s1.classList.remove('hidden'); };
+  btnWA.onclick   = () => { window.open(SUPPORT_WA, "_blank"); };
+
+  // Bloqueios simples de copiar
+  window.addEventListener('keydown', e=>{
+    if(e.key==="F12" || (e.ctrlKey && ["u","s","c"].includes(e.key.toLowerCase()))) e.preventDefault();
+  });
+  document.body.oncontextmenu = () => false;
+</script>
+</body>
+</html>
