@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
@@ -41,7 +41,7 @@
   .logo svg{width:42px;height:42px;color:#00f0ff}
   .badge{display:inline-flex;gap:8px;align-items:center;color:#ffce73;font-weight:800;font-size:14px;margin:8px auto 12px;padding:6px 12px;border-radius:999px;background:#2a1f0a}
   h1{margin:8px 0 8px;font-size:24px;font-weight:800;text-align:center}
-  p{margin:6px auto 18px;color:#var(--muted);line-height:1.55;max-width:48ch;text-align:center}
+  p{margin:6px auto 18px;color:var(--muted);line-height:1.55;max-width:48ch;text-align:center}
   .btn{width:100%; margin-top:12px; padding:16px; border-radius:16px; border:0; font-weight:800; font-size:16px; cursor:pointer; box-shadow:0 8px 20px #0007;}
   .btn-green{background:var(--green); color:#fff}
   .btn-blue{background:var(--blue); color:#fff}
@@ -129,44 +129,4 @@
   // Elements
   const s1 = document.getElementById('screen1');
   const s2 = document.getElementById('screen2');
-  const btnGroup = document.getElementById('btnGroup');
-  const btnBot = document.getElementById('btnBot');
-  const btnBack = document.getElementById('btnBack');
-  const btnWA = document.getElementById('btnWA');
-  const successMsg = document.getElementById('successMsg');
-  const topMsg = document.getElementById('topMsg');
-
-  let liberado = false;
-
-  btnGroup.onclick = () => {
-    window.open(GROUP_LINK, "_blank");
-    liberado = true;
-    successMsg.style.display = 'block';
-  };
-
-  btnBot.onclick = () => {
-    if (!liberado) {
-      topMsg.style.display = 'block';
-      setTimeout(()=> topMsg.style.display='none', 4000);
-      return;
-    }
-    s1.classList.add('hidden'); s2.classList.remove('hidden');
-  };
-
-  btnBack.onclick = () => { s2.classList.add('hidden'); s1.classList.remove('hidden'); };
-  btnWA.onclick   = () => { window.open(SUPPORT_WA, "_blank"); };
-
-  window.addEventListener('keydown', e=>{
-    if(e.key==="F12" || (e.ctrlKey && ["u","s","c"].includes(e.key.toLowerCase()))) e.preventDefault();
-  });
-  document.body.oncontextmenu = () => false;
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
+  const btnGroup = document.getElementById(
